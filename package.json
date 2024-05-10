@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "install:client": "cd client && pnpm install",
+    "install:server": "cd server && pnpm install",
+    "run:client": "cd client && pnpm run dev",
+    "run:server": "cd server && pnpm run dev",
+    "install": "pnpm run install:client && pnpm run install:server",
+    "dev": "pnpm run run:client & pnpm run run:server"
+  }
+}

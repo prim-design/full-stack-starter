@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  server-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - CLIENT=${CLIENT}
+
+  caddy:
+    image: caddy/caddy:2.7.3-alpine
+    container_name: caddy-server
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

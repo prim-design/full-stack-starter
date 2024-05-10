@@ -1,0 +1,10 @@
+{
+    debug
+}
+# api.yourdomain.com
+http://127.0.0.1 {
+    reverse_proxy server-1:3001 {
+        header_down Strict-Transport-Security max-age=31536000
+    }
+}
+ 
